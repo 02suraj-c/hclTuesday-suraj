@@ -1,8 +1,41 @@
 <html>
+  <head>
+    <title>
+      1st Page for git coomit.
+    </title>
+    <link rel ="stylesheet" href="style.css">
+  </head>
   <body>
-    <p>
-      <h2>HCL Full stack training</h2>
-      <b>Welcome to HCL tech.</b>
-    </p>
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact us</li>
+      <li>jecrc foundation</li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <td> S.no</td>
+          <td>First Number</td>
+          <td>Second Number</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td id="first"></td>
+          <td>+</td>
+          <td id="second"></td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      let a = parseInt(prompt("Enter the value of a"),10);
+      let b = parseInt(prompt("Enter the value of b"),10);
+
+      document .getElementById("first").textContent = a;
+      document .getElementById("second").textContent = b;
+      document .getElementById("output").textContent = "Sum: " + (a+b);
+    </script>
   </body>
 </html>
