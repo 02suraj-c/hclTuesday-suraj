@@ -1,2 +1,3 @@
 # hclTuesday-suraj
-git &amp;&amp; github command
+Complete git
+# Author : Suraj Kumar
