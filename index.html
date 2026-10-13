@@ -1,41 +1,166 @@
-<html>
-  <head>
-    <title>
-      1st Page for git coomit.
-    </title>
-    <link rel ="stylesheet" href="style.css">
-  </head>
-  <body>
-    <ul>
-      <li>Home</li>
-      <li>About</li>
-      <li>Contact us</li>
-      <li>jecrc foundation</li>
-    </ul>
-    <table>
-      <thead>
-        <tr>
-          <td> S.no</td>
-          <td>First Number</td>
-          <td>Second Number</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td id="first"></td>
-          <td>+</td>
-          <td id="second"></td>
-        </tr>
-      </tbody>
-    </table>
-    <script>
-      let a = parseInt(prompt("Enter the value of a"),10);
-      let b = parseInt(prompt("Enter the value of b"),10);
 
-      document .getElementById("first").textContent = a;
-      document .getElementById("second").textContent = b;
-      document .getElementById("output").textContent = "Sum: " + (a+b);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator | JECRC University</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">✦ Calculator</div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#university">JECRC University</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Section -->
+    <main id="home" class="main-content">
+        <h1>Simple Calculator</h1>
+        <p class="subtitle">
+            Enter the values, choose an operator and get the result!
+        </p>
+
+        <section class="calculator-card">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Input 1</th>
+                            <th>Operator</th>
+                            <th>Input 2</th>
+                            <th>Final Output</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td class="serial">1</td>
+
+                            <td>
+                                <input
+                                    type="number"
+                                    id="num1"
+                                    placeholder="First number"
+                                    aria-label="First number">
+                            </td>
+
+                            <td>
+                                <select id="operator" aria-label="Operator">
+                                    <option value="+">+</option>
+                                    <option value="-">−</option>
+                                    <option value="*">×</option>
+                                    <option value="/">÷</option>
+                                </select>
+                            </td>
+
+                            <td>
+                                <input
+                                    type="number"
+                                    id="num2"
+                                    placeholder="Second number"
+                                    aria-label="Second number">
+                            </td>
+
+                            <td>
+                                <output id="result" class="result">—</output>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p id="error" class="error" role="alert"></p>
+
+            <button type="button" onclick="calculate()">
+                Calculate
+            </button>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="info-section">
+            <h2>About Us</h2>
+            <p>
+                This simple calculator helps users perform basic
+                mathematical operations in an easy and convenient way.
+            </p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="info-section">
+            <h2>Contact</h2>
+            <p>Learn, create, and calculate with us.</p>
+        </section>
+
+        <!-- University Section -->
+        <section id="university" class="info-section">
+            <h2>JECRC University</h2>
+            <p>Education, innovation, and excellence.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ♥ for a better tomorrow</p>
+        <p>© 2026 JECRC University</p>
+    </footer>
+
+    <script>
+        function calculate() {
+            const first = document.getElementById("num1").value;
+            const second = document.getElementById("num2").value;
+            const operator = document.getElementById("operator").value;
+            const resultElement = document.getElementById("result");
+            const errorElement = document.getElementById("error");
+
+            if (first.trim() === "" || second.trim() === "") {
+                errorElement.textContent = "Please enter both numbers.";
+                resultElement.textContent = "—";
+                return;
+            }
+
+            const a = Number(first);
+            const b = Number(second);
+            let result;
+
+            switch (operator) {
+                case "+":
+                    result = a + b;
+                    break;
+
+                case "-":
+                    result = a - b;
+                    break;
+
+                case "*":
+                    result = a * b;
+                    break;
+
+                case "/":
+                    if (b === 0) {
+                        errorElement.textContent =
+                            "Cannot divide by zero.";
+                        resultElement.textContent = "—";
+                        return;
+                    }
+                    result = a / b;
+                    break;
+            }
+
+            resultElement.textContent =
+                `${a} ${operator === "*" ? "×" :
+                    operator === "/" ? "÷" : operator} ${b} = ${result}`;
+
+            errorElement.textContent = "";
+        }
     </script>
-  </body>
+
+</body>
 </html>
